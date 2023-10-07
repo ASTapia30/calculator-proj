@@ -17,3 +17,31 @@ function multiply(...numbers) {
 function divide(...numbers) {
   return numbers.reduce((acc, curr) => acc / curr);
 }
+
+function updateDisplay() {
+  document.getElementById('display').value = currentInput;
+}
+
+function clearDisplay() {
+  currentInput = "";
+  firstValue = null;
+  currentOperation = null;
+  updateDisplay();
+}
+
+function appendNumber(number) {
+  currentInput += number;
+  updateDisplay();
+}
+
+function setOperation(operator) {
+  if (currentInput === "") return;
+
+  if (firstValue !== null) {
+      compute();
+  }
+
+  firstValue = parseFloat(currentInput);
+  currentOperation = operator;
+  currentInput = "";
+}
